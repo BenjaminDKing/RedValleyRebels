@@ -9,15 +9,18 @@ const nodemailer = require("nodemailer");
 //        failure? prompt user
 
 router.post('/submit_email', function(req, res, next) {
+  console.log("req.body: " + req.body);
   const token = req.body.token;
+  console.log("Token: " + token); // [object, Object]
   const form = req.body.form;
+  console.log("Form: " + form); //  undefined
 
   verifyRecaptcha(token).then( response => {
-    console.log(response); // undefined
-    if (response.response.success) {
-      sendEmail(form).then(
-
-      )
+    console.log(response);
+    if (response.success) {
+      sendEmail(form).then( response => {
+        console.log(response);
+      })
     } else {
       console.log("Recaptcha Failure");
     }
@@ -27,17 +30,19 @@ router.post('/submit_email', function(req, res, next) {
 async function verifyRecaptcha(token) {
 
   try {
-    axios.post(
+    const response = axios.post(
       `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`
     ).then(response => {
+      // console.log(response);
       if (response.data.success) {
         console.log("Human");
-        return({"response": "Success"});
+        return({success: true});
       } else {
         console.log("Robot");
-        return({"response": "Failure"});
+        return({success: false});
       }
     })
+    return response;
   } catch(err) {
     console.log(err);
   }
@@ -62,21 +67,15 @@ async function sendEmail(form) {
       Email: ${form.email}
       Phone Number: ${form.phone}
       Name: ${form.firstName + " " + form.lastName}
-      ${form.text}
+      Message: ${form.text}
       `,
     firstName: form.firstName,
     lastName: form.lastName,
   }
 
-  transporter.sendMail(options, function(err, info) {
-    if(err) {
-      console.log(err);
-      return
-    } 
-    console.log(info.response);
-    return info.response;
-  })
-  return info.response;
+  let info = await transporter.sendMail(options)
+    
+  return info;
 }
 
 module.exports = router;

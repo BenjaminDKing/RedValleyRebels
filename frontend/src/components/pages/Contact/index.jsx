@@ -19,22 +19,11 @@ function Contact() {
     }
 
     const handleSubmit = (e) =>{
-        console.log("Submit Recaptcha");
         e.preventDefault();
         const token = captchaRef.current.getValue();
         captchaRef.current.reset();
-        submitEmail(
-            {
-                token: token,
-                form: formData
-            }).then( res => {
-            if (res.data.response == "Success") {
-                // HUMAN
-                // Submit form to back end, then send email through Nodemailer
-            } else {
-                // BOT
-                // Reject form, don't send to backend, prompt user of failure
-            }
+        submitEmail(token, formData).then( res => {
+            console.log(res);
         })
     }
 
