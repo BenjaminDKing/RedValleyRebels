@@ -37,7 +37,7 @@ function Navbar() {
   return (
     <AppBar 
       position="static"
-      style={{ background: "#ED2B2A "}}
+      style={{ background: "#BF9270 "}}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
