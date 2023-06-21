@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import Example from "../../carousel";
+
 
 function FAQ() {
     return(
         <div className="faq">
+        <Example/>
         <h1>Frequently Asked Questions</h1>
             <ul>
                 <li>By Reservation Only</li>

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { submitEmail } from "../../../api";
+import "./contact.css";
 
 function Contact() {
     const captchaRef = useRef(null);

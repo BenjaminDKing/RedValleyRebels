@@ -4,6 +4,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 const instagram = require("../images/instagram_icon.png");
 const tripadvisor = require("../images/tripadvisor_icon.png");
 
+const logo = require("../images/rvr_logo1.png");
+
 function Footer() {
 
     return(
@@ -47,6 +49,18 @@ function Footer() {
                 </Box></a>
             </div>
             <div className="contact-info">
+                <h2>Red Valley Rebels</h2>
+                <Box 
+                    sx={{ 
+                        flexGrow: 1, 
+                        display: { xs: 'none', md: 'flex' },
+                        height: 100,
+                        width: 160,
+                        mr: 1
+                    }}
+                    component="img"
+                    src={logo}>
+                </Box>
                 <h4 className="contact-info-title">Contact Us</h4>
                 <ul>
                     <li>28195 US Highway 285, Fairplay, CO 80550</li>

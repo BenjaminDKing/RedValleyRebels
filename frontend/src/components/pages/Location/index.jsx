@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+import Box from '@mui/material/Box';
+import './location.css'
 
 // Longitude: -105.993770
 // Latitude: 39.219960
 
 const coordinates = {
-    lat: 39.219960,
-    lng: -105.993770
-}
+    lat: 39.2758535,
+    lng: -105.9330976
+}   
 
 function Location() {
     const { isLoaded } = useLoadScript({googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY});
@@ -15,10 +17,9 @@ function Location() {
     if ( !isLoaded ) { return <div>Loading...</div>}
     return(
         <div className="location">
-            <h1>Directions</h1>
-            <div className="location-body">    
-                    <Map />
+            <div className="location-body">
                 <div className="location-text-container">
+                    <h1>Directions</h1>
                     <div className="breckenridge-div">
                         <h2>From Breckenridge</h2>
                         <p>
@@ -38,19 +39,25 @@ function Location() {
                         </p>
                     </div>
                 </div>
+                <Map />    
             </div>
         </div>
     )
 }
 
 function Map() {
+    const onClick = () => {
+        window.open("https://maps.google.com?q="+39.2758535+","+-105.9330976 );
+      };
+
     return (
         <GoogleMap
             zoom={15}
             center={coordinates}
             mapContainerClassName="map-container"
+            onClick={onClick}
         >
-            <MarkerF position={{lat: 39.219960, lng: -105.993770}}> </MarkerF>
+            <MarkerF position={{lat: 39.2758535, lng: -105.9330976}}> </MarkerF>
         </GoogleMap>
     )
 }

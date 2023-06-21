@@ -37,7 +37,17 @@ function Navbar() {
   return (
     <AppBar 
       position="static"
-      style={{ background: "#BF9270 "}}
+      style={{ 
+        // background: "#D92A28 ",
+        background: 'linear-gradient(45deg,#CD1818, #381010)',
+
+        // background: 'linear-gradient(45deg,#d92a28, #381010)',
+        // filter: "brightness(125%)",
+        borderStyle: "solid", 
+        borderColor: "black", 
+        color: "black"
+      }}
+
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -106,7 +116,7 @@ function Navbar() {
                     key={page[0]} 
                     onClick={handleCloseNavMenu}
                   >
-                    <Typography textAlign="center">{page[0]}</Typography>
+                    <Typography textAlign="center" color="black" fontWeight="bold" >{page[0]}</Typography>
                   </MenuItem>
                 </Link>
               ))}
@@ -149,7 +159,7 @@ function Navbar() {
                 <Button
                   key={page[0]}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{ my: 2, color: 'black', fontWeight: "bold" , display: 'block',}}
                 >
                   {page[0]}
                 </Button>
