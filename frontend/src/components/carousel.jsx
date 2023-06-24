@@ -1,54 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import Carousel from 'react-material-ui-carousel'
-import { Paper, Button } from '@mui/material'
-import { horses } from './horses';
+import Carousel from 'react-elastic-carousel';
 
-function Example(props)
-{
-    // var items = [
-    //     {
-    //         name: "Random Name #1",
-    //         description: "Probably the most random thing you have ever seen!"
-    //     },
-    //     {
-    //         name: "Random Name #2",
-    //         description: "Hello World!"
-    //     }
-    // ]
+const buddy = require("../images/Buddy.jpeg");
+const dexi = require("../images/Dexi.jpeg");
+const goliath = require("../images/Goliath.jpeg");
+const rusty = require("../images/Rusty.jpeg");
+const tommy = require("../images/Tommy.jpeg");
+const mia = require("../images/mia.jpg");
+const penny = require("../images/penny.jpg");
+const harley = require("../images/harley.jpg");
+const cronk = require("../images/cronk.jpg");
+const calamity = require("../images/calamity.jpg");
+const lucky = require("../images/lucky.jpg");
+const chickenwing = require("../images/chicken wing.jpg");
+const rex = require("../images/rex.jpeg");
+const ember = require("../images/ember.jpeg");
+const apache = require("../images/apache.jpeg");
+const tank = require("../images/tank.jpg");
+const bettywhite = require("../images/betty white.jpg");
+const noodle = require("../images/noodle.jpg");
+const daisy = require("../images/daisy.jpg");
+
+function HorseCarousel() {
 
     return (
-        <Carousel>
-            {/* {
-                horses.map( (item, i) => <Item key={i} item={item} /> )
-            } */}
-        </Carousel>
-    )
-}
-
-function Item(props)
-{
-    return (
-        <Paper>
-            <h2>{props.item.name}</h2>
-            {/* <p>{props.item.img}</p> */}
+        <Carousel itemsToShow={3}>
             <Box 
                 sx={{ 
                     flexGrow: 1, 
-                    height: 500,
-                    width: 800,
+                    height: 300,
+                    width: 600,
                     mr: 1
                   }}
-                  className="horse-box"
+                  className="buddy-box"
                   component="img"
-                  src={props.item.img}>
+                  src={buddy}>
                 </Box>
 
-            <Button className="CheckButton">
-                Check it out!
-            </Button>
-        </Paper>
-    )
-}
+            <Box 
+                sx={{ 
+                    flexGrow: 1, 
+                    height: 300,
+                    width: 600,
+                    mr: 1
+                  }}
+                  className="dexi-box"
+                  component="img"
+                  src={dexi}>
+            </Box>
 
-export default Example;
+            <div className='box'>1</div>
+            <div className='box'>2</div>
+            <div className='box'>3</div>
+            <div className='box'>4</div>
+            <div className='box'>5</div>
+        </Carousel>
+    )
+    }
+
+export default HorseCarousel;
